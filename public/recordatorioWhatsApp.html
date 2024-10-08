@@ -1,0 +1,28 @@
+<!-- Recordatorios de Turnos -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recordatorios de Turnos</title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <h1>Recordatorios de Turnos vía WhatsApp</h1>
+
+  <form id="whatsappForm">
+    <label for="paciente">Paciente:</label>
+    <input type="text" id="paciente" name="paciente" required>
+
+    <label for="turno">Turno:</label>
+    <input type="text" id="turno" name="turno" required>
+
+    <button type="submit">Enviar Recordatorio</button>
+  </form>
+
+  <h2>Lista de Recordatorios Enviados</h2>
+  <ul id="whatsappList"></ul>
+
+  <script src="/js/whatsapp.js"></script>
+</body>
+</html>

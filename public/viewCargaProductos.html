@@ -1,0 +1,31 @@
+<!-- Carga de Productos Médicos -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carga de Productos Médicos</title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <h1>Carga de Productos Médicos</h1>
+
+  <form id="productoForm">
+    <label for="nombre">Nombre del Producto:</label>
+    <input type="text" id="nombre" name="nombre" required>
+
+    <label for="dosis">Dosis Recomendada:</label>
+    <input type="text" id="dosis" name="dosis" required>
+
+    <label for="efectos">Efectos Secundarios:</label>
+    <textarea id="efectos" name="efectos" required></textarea>
+
+    <button type="submit">Cargar Producto</button>
+  </form>
+
+  <h2>Lista de Productos</h2>
+  <ul id="productoList"></ul>
+
+  <script src="/js/producto.js"></script>
+</body>
+</html>
