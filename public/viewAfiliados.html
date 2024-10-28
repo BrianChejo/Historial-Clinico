@@ -1,34 +1,43 @@
-<!-- ABM de Pacientes -->
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ABM de Pacientes</title>
-  <link rel="stylesheet" href="/css/styles.css">
+  <title>Gestión de Afiliados</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/nav.css">
 </head>
 <body>
-  <h1>Gestión de Pacientes</h1>
+  <div id="nav-placeholder"></div>
 
-  <form id="pacienteForm">
-    <label for="nombre">Nombre:</label>
-    <input type="text" id="nombre" name="nombre" required>
+  <div class="container my-5">
+    <h1 class="text-center">Gestión de Afiliados</h1>
 
-    <label for="dni">DNI:</label>
-    <input type="text" id="dni" name="dni" required>
+    <form id="pacienteForm" class="mt-4">
+      <div class="form-group">
+        <label for="nombre">Nombre</label>
+        <input type="text" id="nombre" name="nombre" class="form-control" required>
+      </div>
+      <div class="form-group">
+        <label for="dni">DNI</label>
+        <input type="text" id="dni" name="dni" class="form-control" required>
+      </div>
+      <div class="form-group">
+        <label for="historial">Historial Clínico</label>
+        <textarea id="historial" name="historial" class="form-control" required></textarea>
+      </div>
+      <div class="form-group">
+        <label for="contacto">Contacto de Emergencia</label>
+        <input type="text" id="contacto" name="contacto" class="form-control" required>
+      </div>
+      <button type="submit" class="btn btn-primary">Registrar Paciente</button>
+    </form>
+  </div>
 
-    <label for="historial">Historial Clínico:</label>
-    <textarea id="historial" name="historial" required></textarea>
-
-    <label for="contacto">Contacto de Emergencia:</label>
-    <input type="text" id="contacto" name="contacto" required>
-
-    <button type="submit">Registrar Paciente</button>
-  </form>
-
-  <h2>Lista de Pacientes</h2>
-  <ul id="pacienteList"></ul>
-
-  <script src="/js/paciente.js"></script>
+  <script src="/js/loadNav.js"></script>
+  <script src="/js/logicaPacientes.js"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>

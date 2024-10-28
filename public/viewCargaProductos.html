@@ -1,31 +1,39 @@
-<!-- Carga de Productos Médicos -->
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Carga de Productos Médicos</title>
-  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/nav.css">
 </head>
 <body>
-  <h1>Carga de Productos Médicos</h1>
+  <div id="nav-placeholder"></div>
 
-  <form id="productoForm">
-    <label for="nombre">Nombre del Producto:</label>
-    <input type="text" id="nombre" name="nombre" required>
+  <div class="container my-5">
+    <h1 class="text-center">Carga de Productos Médicos</h1>
 
-    <label for="dosis">Dosis Recomendada:</label>
-    <input type="text" id="dosis" name="dosis" required>
+    <form id="productoForm" class="mt-4">
+      <div class="form-group">
+        <label for="nombre">Nombre del Producto</label>
+        <input type="text" id="nombre" name="nombre" class="form-control" required>
+      </div>
+      <div class="form-group">
+        <label for="dosis">Dosis Recomendada</label>
+        <input type="text" id="dosis" name="dosis" class="form-control" required>
+      </div>
+      <div class="form-group">
+        <label for="efectos">Efectos Secundarios</label>
+        <textarea id="efectos" name="efectos" class="form-control" required></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary">Cargar Producto</button>
+    </form>
+  </div>
 
-    <label for="efectos">Efectos Secundarios:</label>
-    <textarea id="efectos" name="efectos" required></textarea>
-
-    <button type="submit">Cargar Producto</button>
-  </form>
-
-  <h2>Lista de Productos</h2>
-  <ul id="productoList"></ul>
-
-  <script src="/js/producto.js"></script>
+  <script src="/js/loadNav.js"></script>
+  <script src="/js/logicaProductos.js"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>

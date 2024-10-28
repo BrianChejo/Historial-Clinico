@@ -1,34 +1,43 @@
-<!-- ABM de Turnos -->
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ABM de Turnos</title>
-  <link rel="stylesheet" href="/css/styles.css">
+  <title>Gestión de Turnos</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/nav.css">
 </head>
 <body>
-  <h1>Gestión de Turnos</h1>
+  <div id="nav-placeholder"></div>
 
-  <form id="turnoForm">
-    <label for="paciente">Paciente:</label>
-    <input type="text" id="paciente" name="paciente" required>
+  <div class="container my-5">
+    <h1 class="text-center">Gestión de Turnos</h1>
 
-    <label for="medico">Médico:</label>
-    <input type="text" id="medico" name="medico" required>
+    <form id="turnoForm" class="mt-4">
+      <div class="form-group">
+        <label for="paciente">Paciente</label>
+        <input type="text" id="paciente" name="paciente" class="form-control" required>
+      </div>
+      <div class="form-group">
+        <label for="medico">Médico</label>
+        <input type="text" id="medico" name="medico" class="form-control" required>
+      </div>
+      <div class="form-group">
+        <label for="fecha">Fecha</label>
+        <input type="date" id="fecha" name="fecha" class="form-control" required>
+      </div>
+      <div class="form-group">
+        <label for="hora">Hora</label>
+        <input type="time" id="hora" name="hora" class="form-control" required>
+      </div>
+      <button type="submit" class="btn btn-primary">Agendar Turno</button>
+    </form>
+  </div>
 
-    <label for="fecha">Fecha:</label>
-    <input type="date" id="fecha" name="fecha" required>
-
-    <label for="hora">Hora:</label>
-    <input type="time" id="hora" name="hora" required>
-
-    <button type="submit">Agendar Turno</button>
-  </form>
-
-  <h2>Lista de Turnos</h2>
-  <ul id="turnoList"></ul>
-
-  <script src="/js/turno.js"></script>
+  <script src="/js/loadNav.js"></script>
+  <script src="/js/logicaTurnos.js"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
