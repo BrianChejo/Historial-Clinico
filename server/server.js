@@ -3,6 +3,7 @@ const path = require('path');
 const app = express();
 const port = 3000;
 const cors = require('cors');
+const usuariosRoutes = require('./routes/usuarios');
 
 // Importar rutas
 const medicosRoutes = require('./routes/medicos');
@@ -20,6 +21,7 @@ app.get('/', (req, res) => {
 });
 
 // Usar rutas importadas
+app.use('/usuarios', usuariosRoutes);
 app.use('/medicos', medicosRoutes);
 app.use('/pacientes', pacientesRoutes);
 app.use('/turnos', turnosRoutes);
