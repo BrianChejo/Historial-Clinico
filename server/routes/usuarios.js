@@ -1,19 +1,18 @@
+// server/routes/usuarios.js
 const express = require('express');
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 const db = require('../db');
 const router = express.Router();
 
 // Registro de usuario
 router.post('/registro', async (req, res) => {
-  const { nombre, email, password } = req.body;
+  const { nombre, email, password, rol = 'paciente' } = req.body;
 
   try {
-    // Encriptar la contraseña
     const hashedPassword = await bcrypt.hash(password, 10);
-
     db.query(
-      'INSERT INTO usuarios (nombre, email, password) VALUES (?, ?, ?)',
-      [nombre, email, hashedPassword],
+      'INSERT INTO usuarios (nombre, email, password, rol) VALUES (?, ?, ?, ?)',
+      [nombre, email, hashedPassword, rol],
       (err, results) => {
         if (err) return res.status(500).json({ error: 'Error al registrar usuario' });
         res.status(201).json({ message: 'Registro exitoso' });
@@ -36,7 +35,8 @@ router.post('/login', (req, res) => {
     const passwordMatch = await bcrypt.compare(password, user.password);
 
     if (passwordMatch) {
-      res.json({ message: 'Inicio de sesión exitoso' });
+      req.session.user = { id: user.id, rol: user.rol }; // Guardar en la sesión
+      res.json({ message: 'Inicio de sesión exitoso', rol: user.rol });
     } else {
       res.status(401).json({ error: 'Contraseña incorrecta' });
     }

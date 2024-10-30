@@ -1,32 +1,48 @@
+// server/server.js
 const express = require('express');
 const path = require('path');
-const app = express();
-const port = 3000;
+const session = require('express-session');
 const cors = require('cors');
+const { isAuthenticated, authorize } = require('./middleware');
 const usuariosRoutes = require('./routes/usuarios');
-
-// Importar rutas
 const medicosRoutes = require('./routes/medicos');
 const pacientesRoutes = require('./routes/pacientes');
 const turnosRoutes = require('./routes/turnos');
 const productosRoutes = require('./routes/productos');
 const recordatoriosRoutes = require('./routes/recordatorios');
 
-app.use(express.static(path.join(__dirname, '../public')));
-app.use(express.json());
+const app = express();
+const port = 3000;
+
+// Configuración de CORS
 app.use(cors());
 
+// Configuración de sesiones
+app.use(session({
+  secret: 'mi_secreto_secreto',
+  resave: false,
+  saveUninitialized: true,
+  cookie: { secure: false } // Cambiar a true si usas HTTPS
+}));
+
+// Configurar Express para procesar JSON y archivos estáticos
+app.use(express.json());
+app.use(express.static(path.join(__dirname, '../public')));
+
+// Ruta pública para la página principal
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '../public/app.html'));
 });
 
-// Usar rutas importadas
+// Rutas públicas (sin restricciones)
 app.use('/usuarios', usuariosRoutes);
-app.use('/medicos', medicosRoutes);
-app.use('/pacientes', pacientesRoutes);
-app.use('/turnos', turnosRoutes);
-app.use('/productos', productosRoutes);
-app.use('/recordatorios', recordatoriosRoutes);
+
+// Rutas protegidas con restricciones de rol
+app.use('/productos', isAuthenticated, authorize(['medico', 'administrador']), productosRoutes);
+app.use('/medicos', isAuthenticated, authorize(['administrador']), medicosRoutes);
+app.use('/pacientes', isAuthenticated, authorize(['paciente', 'administrador']), pacientesRoutes);
+app.use('/turnos', isAuthenticated, authorize(['paciente', 'administrador']), turnosRoutes);
+app.use('/recordatorios', isAuthenticated, authorize(['paciente']), recordatoriosRoutes);
 
 // Iniciar el servidor
 app.listen(port, () => {

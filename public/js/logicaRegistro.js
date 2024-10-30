@@ -1,5 +1,3 @@
-// public/js/logicaRegistro.js
-
 document.getElementById('registroForm').addEventListener('submit', async function(event) {
     event.preventDefault();
   

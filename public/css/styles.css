@@ -1,21 +1,22 @@
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 20px;
-  }
-  
-  form {
-    display: flex;
-    flex-direction: column;
-    max-width: 300px;
-  }
-  
-  label {
-    margin-top: 10px;
-  }
-  
-  input, button {
-    padding: 8px;
-    margin-top: 5px;
-  }
-  
+  background-color: #f8f9fa; /* Color de fondo suave */
+}
+
+.container {
+  max-width: 400px; /* Limitar el ancho del contenedor */
+  margin: auto; /* Centrar el contenedor */
+  padding: 20px; /* Espaciado interno */
+  border-radius: 8px; /* Bordes redondeados */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra para dar profundidad */
+  background-color: white; /* Fondo blanco para el formulario */
+}
+
+.btn-primary {
+  background-color: #007bff; /* Color de botón */
+  border-color: #007bff; /* Color de borde del botón */
+}
+
+.btn-primary:hover {
+  background-color: #0056b3; /* Color de botón al pasar el mouse */
+  border-color: #0056b3; /* Color de borde del botón al pasar el mouse */
+}

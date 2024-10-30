@@ -1,30 +1,24 @@
 <!-- public/nav.html -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="app.html">Historial Clínico</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link" href="viewCargaProductos.html">Carga de Productos</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="viewMedicos.html">Médicos</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="viewTurnos.html">Turnos</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="viewafiliados.html">Afiliados</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="viewRecordatorioMedicacion.html">Recordatorios Medicación</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="recordatorioWhatsApp.html">Recordatorios WhatsApp</a>
-        </li>
-      </ul>
-    </div>
-  </nav>
-  
+  <a class="navbar-brand" href="app.html">Historial Clínico</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav" id="menu-items">
+      <!-- Opciones del menú dinámico según rol -->
+    </ul>
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item" id="login-item">
+        <a class="nav-link" href="login.html">Iniciar Sesión</a>
+      </li>
+      <li class="nav-item" id="register-item">
+        <a class="nav-link" href="registro.html">Registrarse</a>
+      </li>
+      <li class="nav-item" id="logout-item" style="display: none;">
+        <a class="nav-link" href="#" onclick="logout()">Cerrar Sesión</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<script src="/js/loadNav.js"></script>

@@ -9,7 +9,17 @@
   <link rel="stylesheet" href="/css/nav.css">
 </head>
 <body>
+  <script>
+    // Redireccionar al login si el usuario no está autenticado
+    const rol = localStorage.getItem('rol');
+    if (!rol) {
+      alert('Debes iniciar sesión para acceder a esta página');
+      window.location.href = 'login.html';
+    }
+  </script>
+  
   <div id="nav-placeholder"></div>
+
 
   <h1>Recordatorios de Turnos vía WhatsApp</h1>
 
