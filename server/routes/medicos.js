@@ -22,5 +22,19 @@ router.post('/', (req, res) => {
     }
   );
 });
+// Obtener pacientes de un médico específico
+router.get('/pacientes', (req, res) => {
+  const medicoId = req.session.user.id; // Suponiendo que el ID del médico está en la sesión del usuario
+
+  db.query(
+    'SELECT * FROM pacientes WHERE medico_id = ?',
+    [medicoId],
+    (err, results) => {
+      if (err) return res.status(500).json({ error: 'Error al obtener los pacientes' });
+      res.json(results);
+    }
+  );
+});
+
 
 module.exports = router;

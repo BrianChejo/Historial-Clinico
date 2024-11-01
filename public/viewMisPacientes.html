@@ -1,0 +1,31 @@
+<!-- public/viewMisPacientes.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mis Pacientes</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+  <!-- Redirección al login si el usuario no es médico -->
+  <script>
+    const rol = localStorage.getItem('rol');
+    if (!rol || rol !== 'medico') {
+      alert('Debes iniciar sesión como médico para acceder a esta página');
+      window.location.href = 'login.html';
+    }
+  </script>
+  <div id="nav-placeholder"></div>
+
+  <div class="container my-5">
+    <h2 class="text-center">Mis Pacientes</h2>
+    <ul class="list-group mt-4" id="pacientes-list">
+      <!-- Aquí se cargarán los pacientes del médico -->
+    </ul>
+  </div>
+
+  <script src="/js/loadNav.js"></script>
+  <script src="/js/logicaMisPacientes.js"></script>
+</body>
+</html>

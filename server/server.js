@@ -39,7 +39,7 @@ app.use('/usuarios', usuariosRoutes);
 
 // Rutas protegidas con restricciones de rol
 app.use('/productos', isAuthenticated, authorize(['medico', 'administrador']), productosRoutes);
-app.use('/medicos', isAuthenticated, authorize(['administrador']), medicosRoutes);
+app.use('/medicos', isAuthenticated, authorize(['medico']), medicosRoutes);
 app.use('/pacientes', isAuthenticated, authorize(['paciente', 'administrador']), pacientesRoutes);
 app.use('/turnos', isAuthenticated, authorize(['paciente', 'administrador']), turnosRoutes);
 app.use('/recordatorios', isAuthenticated, authorize(['paciente']), recordatoriosRoutes);

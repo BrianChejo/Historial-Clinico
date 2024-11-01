@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mis Recordatorios</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+  <!-- Redirección al login si el usuario no es paciente -->
+  <script>
+    const rol = localStorage.getItem('rol');
+    if (!rol || rol !== 'paciente') {
+      alert('Debes iniciar sesión como paciente para acceder a esta página');
+      window.location.href = 'login.html';
+    }
+  </script>
+
+  <div id="nav-placeholder"></div>
+
+  <div class="container my-5">
+    <h2 class="text-center">Mis Recordatorios de Medicación</h2>
+    <ul class="list-group mt-4" id="recordatorios-list">
+      <!-- Aquí se cargarán los recordatorios de medicación del paciente -->
+    </ul>
+  </div>
+
+  <script src="/js/loadNav.js"></script>
+  <script src="/js/logicaRecordatoriosPaciente.js"></script>
+</body>
+</html>

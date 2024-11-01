@@ -1,4 +1,3 @@
-// server/routes/usuarios.js
 const express = require('express');
 const bcrypt = require('bcryptjs');
 const db = require('../db');
@@ -42,5 +41,6 @@ router.post('/login', (req, res) => {
     }
   });
 });
+
 
 module.exports = router;

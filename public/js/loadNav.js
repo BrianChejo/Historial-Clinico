@@ -1,5 +1,3 @@
-// public/js/loadNav.js
-
 document.addEventListener('DOMContentLoaded', function () {
   // Cargar el contenido de nav.html
   fetch('/nav.html')
@@ -31,13 +29,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
         if (rol === 'paciente') {
           menuItems.innerHTML += `
-            <li class="nav-item"><a class="nav-link" href="viewTurnos.html">Mis Turnos</a></li>
-            <li class="nav-item"><a class="nav-link" href="viewRecordatorioMedicacion.html">Recordatorios de Medicación</a></li>
+            <li class="nav-item"><a class="nav-link" href="viewTurnos.html">Solicitar Turno</a></li>
+            <li class="nav-item"><a class="nav-link" href="viewRecordatoriosPaciente.html">Mis Recordatorios</a></li>
           `;
         } else if (rol === 'medico') {
           menuItems.innerHTML += `
             <li class="nav-item"><a class="nav-link" href="viewCargaProductos.html">Gestionar Productos</a></li>
-            <li class="nav-item"><a class="nav-link" href="viewafiliados.html">Mis Pacientes</a></li>
+            <li class="nav-item"><a class="nav-link" href="viewMisPacientes.html">Mis Pacientes</a></li>
           `;
         } else if (rol === 'administrador') {
           menuItems.innerHTML += `

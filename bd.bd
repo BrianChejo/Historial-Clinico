@@ -1,0 +1,68 @@
+CREATE DATABASE IF NOT EXISTS historial_clinico;
+USE historial_clinico;
+CREATE TABLE IF NOT EXISTS medicos (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  nombre VARCHAR(100) NOT NULL,
+  especialidad VARCHAR(100) NOT NULL,
+  horario VARCHAR(50) NOT NULL,
+  contacto VARCHAR(100) NOT NULL
+);
+CREATE TABLE IF NOT EXISTS pacientes (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  nombre VARCHAR(100) NOT NULL,
+  dni VARCHAR(20) NOT NULL UNIQUE,
+  historial_clinico TEXT,
+  contacto_emergencia VARCHAR(100)
+);
+CREATE TABLE IF NOT EXISTS turnos (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  paciente_id INT,
+  medico_id INT,
+  fecha DATE NOT NULL,
+  hora TIME NOT NULL,
+  FOREIGN KEY (paciente_id) REFERENCES pacientes(id),
+  FOREIGN KEY (medico_id) REFERENCES medicos(id)
+);
+CREATE TABLE IF NOT EXISTS productos (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  nombre VARCHAR(100) NOT NULL,
+  dosis VARCHAR(50) NOT NULL,
+  efectos_secundarios TEXT
+);
+CREATE TABLE IF NOT EXISTS recordatorios (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  paciente_id INT,
+  producto_id INT,
+  tipo VARCHAR(50) NOT NULL, -- 'medicacion' o 'turno'
+  fecha DATE NOT NULL,
+  hora TIME NOT NULL,
+  FOREIGN KEY (paciente_id) REFERENCES pacientes(id),
+  FOREIGN KEY (producto_id) REFERENCES productos(id)
+);
+CREATE TABLE IF NOT EXISTS usuarios (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  nombre VARCHAR(100) NOT NULL,
+  email VARCHAR(100) NOT NULL UNIQUE,
+  password VARCHAR(255) NOT NULL
+);
+ALTER TABLE usuarios ADD COLUMN rol ENUM('paciente', 'medico', 'administrador') DEFAULT 'paciente';
+select * from usuarios;
+
+INSERT INTO usuarios (nombre, email, password, rol) 
+VALUES ('admin', 'admin@gmail.com', 'admin', 'administrador');
+delete from usuarios where id = 1;
+
+UPDATE usuarios
+SET rol = 'medico'
+WHERE id = 4;
+
+-- Agregar médico
+INSERT INTO medicos (nombre, especialidad, horario, contacto) 
+VALUES ('Dr. Juan Pérez', 'Cardiólogo', '9 AM a 5 PM', '123-456-7890');
+
+-- Agregar paciente
+INSERT INTO pacientes (nombre, dni, historial_clinico, contacto_emergencia) 
+VALUES ('María López', '12345678', '', '987-654-3210');
+
+select *from medicos;
+select * from pacientes;
