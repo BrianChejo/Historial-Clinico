@@ -21,8 +21,8 @@ app.use(cors());
 app.use(session({
   secret: 'mi_secreto_secreto',
   resave: false,
-  saveUninitialized: true,
-  cookie: { secure: false } // Cambiar a true si usas HTTPS
+  saveUninitialized: false,  // Cambiado a false para que se guarde solo con datos
+  cookie: { secure: false }   // Cambiar a true si usas HTTPS
 }));
 
 // Configurar Express para procesar JSON y archivos estáticos
@@ -41,7 +41,7 @@ app.use('/usuarios', usuariosRoutes);
 app.use('/productos', isAuthenticated, authorize(['medico', 'administrador']), productosRoutes);
 app.use('/medicos', isAuthenticated, authorize(['medico']), medicosRoutes);
 app.use('/pacientes', isAuthenticated, authorize(['paciente', 'administrador']), pacientesRoutes);
-app.use('/turnos', isAuthenticated, authorize(['paciente', 'administrador']), turnosRoutes);
+app.use('/turnos', isAuthenticated, authorize(['paciente', 'administrador', 'medico']), turnosRoutes);
 app.use('/recordatorios', isAuthenticated, authorize(['paciente']), recordatoriosRoutes);
 
 // Iniciar el servidor

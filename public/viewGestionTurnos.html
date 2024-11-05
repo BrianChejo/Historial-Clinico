@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gestión de Turnos</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+  <!-- Redirección al login si el usuario no es admin o médico -->
+  <script>
+    const rol = localStorage.getItem('rol');
+    if (!rol || (rol !== 'medico' && rol !== 'administrador')) {
+      alert('Debes iniciar sesión como administrador o médico para acceder a esta página');
+      window.location.href = 'login.html';
+    }
+  </script>
+
+  <div id="nav-placeholder"></div>
+
+  <div class="container my-5">
+    <h2 class="text-center">Gestión de Turnos</h2>
+    <div class="table-responsive mt-4">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Paciente</th>
+            <th>Fecha</th>
+            <th>Hora</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody id="turnos-list">
+          <!-- Aquí se cargarán los turnos pendientes -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <script src="/js/loadNav.js"></script>
+  <script src="/js/logicaGestionTurnos.js"></script>
+</body>
+</html>

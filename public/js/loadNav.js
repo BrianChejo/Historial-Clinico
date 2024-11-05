@@ -36,12 +36,13 @@ document.addEventListener('DOMContentLoaded', function () {
           menuItems.innerHTML += `
             <li class="nav-item"><a class="nav-link" href="viewCargaProductos.html">Gestionar Productos</a></li>
             <li class="nav-item"><a class="nav-link" href="viewMisPacientes.html">Mis Pacientes</a></li>
+            <li class="nav-item"><a class="nav-link" href="viewRecordatorioMedicacion.html">Gestionar Recordatorios</a></li>
           `;
         } else if (rol === 'administrador') {
           menuItems.innerHTML += `
             <li class="nav-item"><a class="nav-link" href="viewMedicos.html">Gestionar Médicos</a></li>
             <li class="nav-item"><a class="nav-link" href="viewCargaProductos.html">Gestionar Productos</a></li>
-            <li class="nav-item"><a class="nav-link" href="viewTurnos.html">Gestionar Turnos</a></li>
+            <li class="nav-item"><a class="nav-link" href="viewGestionTurnos.html">Gestionar Turnos</a></li>
           `;
         }
       } else {
