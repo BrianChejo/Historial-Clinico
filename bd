@@ -2,22 +2,22 @@ CREATE DATABASE IF NOT EXISTS historial_clinico;
 USE historial_clinico;
 CREATE TABLE IF NOT EXISTS medicos (
   id INT AUTO_INCREMENT PRIMARY KEY,
-  usuario_id INT,
-  nombre VARCHAR(100) NOT NULL,
-  especialidad VARCHAR(100) NOT NULL,
-  horario VARCHAR(50) NOT NULL,
-  contacto VARCHAR(100) NOT NULL,
+  usuario_id INT NOT NULL UNIQUE, -- Relación uno a uno con usuarios
+  especialidad VARCHAR(100),
+  horario VARCHAR(50),
+  contacto VARCHAR(100),
   FOREIGN KEY (usuario_id) REFERENCES usuarios(id) ON DELETE CASCADE
 );
+
 CREATE TABLE IF NOT EXISTS pacientes (
   id INT AUTO_INCREMENT PRIMARY KEY,
-  usuario_id INT,
-  nombre VARCHAR(100) NOT NULL,
-  dni VARCHAR(20) NOT NULL UNIQUE,
+  usuario_id INT NOT NULL UNIQUE, -- Relación uno a uno con usuarios
+  dni VARCHAR(20) UNIQUE,
   historial_clinico TEXT,
   contacto_emergencia VARCHAR(100),
   FOREIGN KEY (usuario_id) REFERENCES usuarios(id) ON DELETE CASCADE
 );
+
 CREATE TABLE IF NOT EXISTS turnos (
   id INT AUTO_INCREMENT PRIMARY KEY,
   paciente_id INT,
@@ -30,7 +30,7 @@ CREATE TABLE IF NOT EXISTS turnos (
 CREATE TABLE IF NOT EXISTS productos (
   id INT AUTO_INCREMENT PRIMARY KEY,
   nombre VARCHAR(100) NOT NULL,
-  dosis VARCHAR(50) NOT NULL,
+  dosis VARCHAR(255) NOT NULL,
   efectos_secundarios TEXT
 );
 CREATE TABLE IF NOT EXISTS recordatorios (
@@ -54,8 +54,8 @@ CREATE TABLE IF NOT EXISTS usuarios (
 delete from usuarios where id = 1;
 
 UPDATE usuarios
-SET rol = 'administrador'
-WHERE id = 3;
+SET rol = 'paciente'
+WHERE id = 4;
 
 -- Agregar usuario
 INSERT INTO usuarios (nombre, email, password, rol) 
@@ -71,3 +71,4 @@ select * from usuarios;
 select *from medicos;
 select * from pacientes;
 select * from turnos;
+select * from productos;

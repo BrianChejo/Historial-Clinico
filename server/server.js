@@ -10,9 +10,10 @@ const pacientesRoutes = require('./routes/pacientes');
 const turnosRoutes = require('./routes/turnos');
 const productosRoutes = require('./routes/productos');
 const recordatoriosRoutes = require('./routes/recordatorios');
+const usuariosRouter = require('./routes/usuarios');
 
 const app = express();
-const port = 3000;
+const port = 3001;
 
 // Configuración de CORS
 app.use(cors());
@@ -38,11 +39,12 @@ app.get('/', (req, res) => {
 app.use('/usuarios', usuariosRoutes);
 
 // Rutas protegidas con restricciones de rol
-app.use('/productos', isAuthenticated, authorize(['medico', 'administrador']), productosRoutes);
+app.use('/productos', isAuthenticated, authorize(['medico','paciente', 'administrador']), productosRoutes);
 app.use('/medicos', isAuthenticated, authorize(['medico']), medicosRoutes);
-app.use('/pacientes', isAuthenticated, authorize(['paciente', 'administrador']), pacientesRoutes);
+app.use('/pacientes', isAuthenticated, authorize(['paciente','medico', 'administrador']), pacientesRoutes);
 app.use('/turnos', isAuthenticated, authorize(['paciente', 'administrador', 'medico']), turnosRoutes);
 app.use('/recordatorios', isAuthenticated, authorize(['paciente']), recordatoriosRoutes);
+app.use('/usuarios', isAuthenticated, authorize(['administrador']), usuariosRouter);
 
 // Iniciar el servidor
 app.listen(port, () => {

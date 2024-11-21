@@ -1,4 +1,7 @@
-// Función para actualizar el estado de un turno
+document.addEventListener('DOMContentLoaded', async function() {
+  const turnosList = document.getElementById('turnos-list');
+
+  // Función para actualizar el estado de un turno
 async function actualizarEstadoTurno(id, estado) {
   try {
     const response = await fetch(`/turnos/${id}`, {
@@ -21,9 +24,6 @@ async function actualizarEstadoTurno(id, estado) {
     alert(error.message);
   }
 }
-
-document.addEventListener('DOMContentLoaded', async function() {
-  const turnosList = document.getElementById('turnos-list');
 
   // Función para cargar los turnos pendientes
   async function cargarTurnos() {

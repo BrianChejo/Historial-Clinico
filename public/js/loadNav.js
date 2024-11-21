@@ -43,6 +43,7 @@ document.addEventListener('DOMContentLoaded', function () {
             <li class="nav-item"><a class="nav-link" href="viewMedicos.html">Gestionar Médicos</a></li>
             <li class="nav-item"><a class="nav-link" href="viewCargaProductos.html">Gestionar Productos</a></li>
             <li class="nav-item"><a class="nav-link" href="viewGestionTurnos.html">Gestionar Turnos</a></li>
+            <li class="nav-item"><a class="nav-link" href="viewGestionUsuarios.html">Gestionar Usuarios</a></li>
           `;
         }
       } else {
